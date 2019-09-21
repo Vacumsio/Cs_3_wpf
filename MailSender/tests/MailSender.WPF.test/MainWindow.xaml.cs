@@ -18,8 +18,8 @@ namespace MailSender.WPF.test
 
         private void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var user_name = "";
-            SecureString password = null;
+            var user_name = UsenNameEditor.Text;
+            var password = PasswordEditor.SecurePassword;
             var host = "smtp.yandex.ru";
             var port = 25;
 
@@ -32,9 +32,9 @@ namespace MailSender.WPF.test
 
                 using(var message = new MailMessage())
                 {
-                    message.From = new MailAddress("peter.gagarsky@yandex.ru","Пётр");
+                    message.From = new MailAddress("madisava@yandex.ru", "Пётр");
                     message.To.Add(new MailAddress("vacumsio@gmail.com", "Пётр"));
-                    message.Subject = "Zagolovok pisma";
+                    message.Subject = "Заголовок письма";
                     message.Body = msg;
                     //message.Attachments.Add(new Attachment(.....)); для отправки вложений в письме
 
@@ -45,7 +45,7 @@ namespace MailSender.WPF.test
                     }
                     catch (Exception error)
                     {
-                        MessageBox.Show(error.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(error.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }

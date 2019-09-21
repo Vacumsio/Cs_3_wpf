@@ -9,6 +9,9 @@
     <Grid>
         <Label Content="Имя пользователя" HorizontalAlignment="Left" Margin="102,102,0,0" VerticalAlignment="Top" Width="119"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="365,102,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="102,133,0,0" TextWrapping="Wrap" Text="Введите имя" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="364,133,0,0" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Отправить" HorizontalAlignment="Left" Margin="263,193,0,0" VerticalAlignment="Top" Width="75" Click="SendButton_OnClick"/>
 
     </Grid>
 </Window>

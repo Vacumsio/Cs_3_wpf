@@ -33,6 +33,20 @@ namespace MailSender.WPF.test
                 using(var message = new MailMessage())
                 {
                     message.From = new MailAddress("peter.gagarsky@yandex.ru","Пётр");
+                    message.To.Add(new MailAddress("vacumsio@gmail.com", "Пётр"));
+                    message.Subject = "Zagolovok pisma";
+                    message.Body = msg;
+                    //message.Attachments.Add(new Attachment(.....)); для отправки вложений в письме
+
+                    try
+                    {
+                        client.Send(message);
+                        MessageBox.Show("Почта успешно отправлена","Успех!",MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
             }
         }

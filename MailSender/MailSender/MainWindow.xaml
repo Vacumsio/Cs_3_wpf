@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"        
         xmlns:local="clr-namespace:MailSender"
-        xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
+        xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"        
+        xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -37,7 +38,7 @@
                     <ToolBarTray Grid.Row="0" Grid.ColumnSpan="2">
                         <ToolBar>
                             <Label MinWidth="85">Отправители</Label>
-                            <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Senders}"/>
+                            <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Senders}" DisplayMemberPath="Name" SelectedIndex="0"/>
                             <Button ToolTip="Создать">
                                 <fa:ImageAwesome Height="18" Icon="Plus" Foreground="DarkSalmon"/>
                             </Button>
@@ -50,10 +51,10 @@
                         </ToolBar>
                         <ToolBar Band="1">
                             <Label MinWidth="85">Сервера</Label>
-                            <ComboBox MinWidth="75" MaxWidth="150">
-                                <ComboBoxItem>Сервер 1</ComboBoxItem>
-                                <ComboBoxItem>Сервер 2</ComboBoxItem>
-                                <ComboBoxItem>Сервер 3</ComboBoxItem>
+                            <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Servers}" SelectedIndex="0">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type entities:Server}"></DataTemplate>
+                                </ComboBox.ItemTemplate>
                             </ComboBox>
                             <Button ToolTip="Создать">
                                 <fa:ImageAwesome Height="18" Icon="Plus" Foreground="DarkSalmon"/>

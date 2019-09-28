@@ -30,13 +30,9 @@
         <TabControl>
             <TabItem Header="Расылка">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="116*"/>
-                        <ColumnDefinition Width="671*"/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto">
-                        </RowDefinition>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <ToolBarTray Grid.Row="0" Grid.ColumnSpan="2">
                         <ToolBar>

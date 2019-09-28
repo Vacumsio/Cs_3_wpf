@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"        
         xmlns:local="clr-namespace:MailSender"
-        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -40,11 +41,7 @@
                     <ToolBarTray Grid.Row="0" Grid.ColumnSpan="2">
                         <ToolBar>
                             <Label MinWidth="85">Отправители</Label>
-                            <ComboBox MinWidth="75" MaxWidth="150">
-                                <ComboBoxItem>Отправитель 1</ComboBoxItem>
-                                <ComboBoxItem>Отправитель 2</ComboBoxItem>
-                                <ComboBoxItem>Отправитель 3</ComboBoxItem>
-                            </ComboBox>
+                            <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Senders}"/>
                             <Button ToolTip="Создать">
                                 <fa:ImageAwesome Height="18" Icon="Plus" Foreground="DarkSalmon"/>
                             </Button>
@@ -89,9 +86,9 @@
                             <Button ToolTip="Удалить">
                                 <fa:ImageAwesome Height="18" Icon="Trash" Foreground="CadetBlue"/>
                             </Button>
-                        </ToolBar>
+                        </ToolBar>                        
                     </ToolBarTray>
-                    <DataGrid AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID"/>
                             <DataGridTextColumn Header="Имя"/>

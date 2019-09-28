@@ -53,7 +53,13 @@
                             <Label MinWidth="85">Сервера</Label>
                             <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Servers}" SelectedIndex="0">
                                 <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type entities:Server}"></DataTemplate>
+                                    <DataTemplate DataType="{x:Type entities:Server}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}" Opacity="0.6"/>
+                                            <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6"/>
+                                            <TextBlock Text="{Binding Port, StringFormat=:{0}}" Opacity="0.6"/>
+                                        </StackPanel>
+                                    </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
                             <Button ToolTip="Создать">

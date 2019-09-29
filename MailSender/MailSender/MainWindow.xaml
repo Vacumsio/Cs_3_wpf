@@ -56,8 +56,7 @@
                                     <DataTemplate DataType="{x:Type entities:Server}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}" Opacity="0.6"/>
-                                            <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6"/>
-                                            <TextBlock Text="{Binding Port, StringFormat=:{0}}" Opacity="0.6"/>
+                                            <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port, StringFormat=:{0}}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
@@ -100,7 +99,64 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Планировщик">
+                <DockPanel>
+                    <GroupBox Header="Управление">
+                        <StackPanel>
+                            <TextBlock Text="Календарь"/>
+                            <Calendar/>
+                            <StackPanel Margin="5">
+                                <Button HorizontalContentAlignment="Stretch">
+                                    <DockPanel Margin="20,0">
+                                        <fa:ImageAwesome Height="18" Icon="ClockOutline" DockPanel.Dock="Right"/>
+                                        <TextBlock Text="Запланировать"/>
+                                    </DockPanel>
+                                </Button>
+                                <Button HorizontalContentAlignment="Stretch">
+                                    <DockPanel Margin="20,0">
+                                        <fa:ImageAwesome Height="18" Icon="Send" DockPanel.Dock="Right"/>
+                                        <TextBlock Text="Отправить"/>
+                                    </DockPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Задачи">
+                        <ListBox>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 1">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"/>
+                                        <TextBlock Text="Сервер"/>
+                                        <TextBlock Text="Отправители"/>
+                                        <TextBlock Text="Получатели"/>
+                                    </StackPanel>
+                                </GroupBox>                                
+                            </ListBoxItem>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 2">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"/>
+                                        <TextBlock Text="Сервер"/>
+                                        <TextBlock Text="Отправители"/>
+                                        <TextBlock Text="Получатели"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                            <ListBoxItem HorizontalContentAlignment="Stretch">
+                                <GroupBox Header="Задание 3">
+                                    <StackPanel>
+                                        <TextBlock Text="Время"/>
+                                        <TextBlock Text="Сервер"/>
+                                        <TextBlock Text="Отправители"/>
+                                        <TextBlock Text="Получатели"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </ListBoxItem>
+                        </ListBox>
+                    </GroupBox>
+                </DockPanel>
+            </TabItem>
             <TabItem Header="Письма"></TabItem>
         </TabControl>
     </DockPanel>

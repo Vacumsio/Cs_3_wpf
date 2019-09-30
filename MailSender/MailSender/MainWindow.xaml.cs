@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MailSender.Controls;
+using MailSender.lib.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +22,33 @@ namespace MailSender
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow() => InitializeComponent();
+
+        private void ExitMenuItem_OnClick(object Sender, RoutedEventArgs e) => Close();
+
+        private void TabControllerSwitcher_LeftButtonClick(object Sender, EventArgs E)
         {
-            InitializeComponent();
+            if (!(Sender is TabControllerSwitcher switcher)) return;
+
+            MainTabControl.SelectedIndex--;
+
+            if (MainTabControl.SelectedIndex == 0)
+            {
+                switcher.LeftButtonVisible = false;
+            }
         }
 
-        private void ExitMenuItem_OnClick(object sender, RoutedEventArgs e)
+        private void TabControllerSwitcher_RightButtonClick(object Sender, EventArgs E)
         {
-            Close();
+            if (!(Sender is TabControllerSwitcher switcher)) return;
+
+            MainTabControl.SelectedIndex++;
+
+            if (MainTabControl.SelectedIndex == MainTabControl.Items.Count-1)
+            {
+                switcher.RightButtonVisible = false;
+            }
         }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MailSender.lib.Entities
 {
-    public class Sender
+    public  class Sender
     {
         public int Id { get; set; }
 

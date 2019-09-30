@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"        
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
-        xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"    
+        xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
+        xmlns:ctls="clr-namespace:MailSender.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -26,10 +27,15 @@
                 <MenuItem Header="О программе" IsEnabled="False"/>
             </MenuItem>
         </Menu>
-        <StatusBar DockPanel.Dock="Bottom">
-            <TextBlock>Готов к труду и обороне</TextBlock>
+        <StatusBar DockPanel.Dock="Bottom">            
+            <StatusBarItem>
+                <ctls:TabControllerSwitcher Width="100" LeftButtonClick="TabControllerSwitcher_LeftButtonClick" RightButtonClick="TabControllerSwitcher_RightButtonClick"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Value="34" Width="100" Height="8"/>
+            </StatusBarItem>
         </StatusBar>
-        <TabControl>
+        <TabControl Name="MainTabControl">
             <TabItem Header="Расылка">
                 <Grid>
                     <Grid.Resources>

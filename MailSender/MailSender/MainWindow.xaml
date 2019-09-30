@@ -94,7 +94,13 @@
                             </Button>
                         </ToolBar>                        
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding Recipient, Source=(StaticResource DataBase)}">
+                    <DataGrid Grid.Row="1"
+                              AutoGenerateColumns="False"
+                              ItemsSource="{Binding Recipient, Source={StaticResource DataBase}}"
+                              GridLinesVisibility="Vertical"
+                              AlternatingRowBackground="LightBlue"
+                              IsReadOnly="True"
+                              HeadersVisibility="Column">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>

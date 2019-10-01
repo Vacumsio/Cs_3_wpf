@@ -50,6 +50,7 @@ namespace MailSender.Controls
                     RightButtonClick?.Invoke(this, EventArgs.Empty);
                     break;
             }
-        }
+        }       
+
     }
 }

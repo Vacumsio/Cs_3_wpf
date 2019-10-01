@@ -44,7 +44,7 @@ namespace MailSender
 
             MainTabControl.SelectedIndex++;
 
-            if (MainTabControl.SelectedIndex == MainTabControl.Items.Count-1)
+            if (MainTabControl.SelectedIndex == MainTabControl.Items.Count - 1)
             {
                 switcher.RightButtonVisible = false;
             }

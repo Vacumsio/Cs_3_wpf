@@ -29,7 +29,10 @@
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">            
             <StatusBarItem>
-                <ctls:TabControllerSwitcher Width="100" LeftButtonClick="TabControllerSwitcher_LeftButtonClick" RightButtonClick="TabControllerSwitcher_RightButtonClick"/>
+                <ctls:TabControllerSwitcher Width="100" 
+                                            LeftButtonVisible="False"
+                                            LeftButtonClick="TabControllerSwitcher_LeftButtonClick" 
+                                            RightButtonClick="TabControllerSwitcher_RightButtonClick"/>
             </StatusBarItem>
             <StatusBarItem>
                 <ProgressBar Value="34" Width="100" Height="8"/>

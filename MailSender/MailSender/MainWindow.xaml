@@ -63,10 +63,11 @@
                             </Button>-->
                             <ctrl:ListController
                                 PanelName="Отправители"
-                                Items="{x:Static data:TestData.Senders}"/>
+                                Items="{x:Static data:TestData.Senders}"
+                                ViewPropertyPath="Name"/>
                         </ToolBar>
                         <ToolBar Band="1">
-                            <Label MinWidth="85">Сервера</Label>
+                            <!--<Label MinWidth="85">Сервера</Label>
                             <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Servers}" SelectedIndex="0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="{x:Type entities:Server}">
@@ -85,7 +86,20 @@
                             </Button>
                             <Button ToolTip="Удалить">
                                 <fa:ImageAwesome Height="18" Icon="Trash" Foreground="CadetBlue"/>
-                            </Button>
+                            </Button>-->
+                            <ctrl:ListController
+                                PanelName="Сервера"
+                                Items="{x:Static data:TestData.Servers}"
+                                ViewPropertyPath="Name">
+                                <ctrl:ListController.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type entities:Server}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}" Opacity="0.6"/>
+                                            <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port, StringFormat=:{0}}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ctrl:ListController.ItemTemplate>
+                            </ctrl:ListController>
                         </ToolBar>
                         <ToolBar>
                             <Label MinWidth="85">Перейти в планировщик</Label>

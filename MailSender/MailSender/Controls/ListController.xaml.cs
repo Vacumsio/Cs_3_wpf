@@ -267,7 +267,6 @@ namespace MailSender.Controls
 
         #endregion
 
-
         //propdp +TAB
 
         //public int MyProperty

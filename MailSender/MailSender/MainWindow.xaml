@@ -61,7 +61,9 @@
                             <Button ToolTip="Удалить">
                                 <fa:ImageAwesome Height="18" Icon="Trash" Foreground="CadetBlue"/>
                             </Button>-->
-                            <ctrl:ListController Items="{x:Static data:TestData.Senders}"/>
+                            <ctrl:ListController
+                                PanelName="Отправители"
+                                Items="{x:Static data:TestData.Senders}"/>
                         </ToolBar>
                         <ToolBar Band="1">
                             <Label MinWidth="85">Сервера</Label>

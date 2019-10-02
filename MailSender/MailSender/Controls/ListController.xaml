@@ -17,19 +17,30 @@
         </Style>
     </UserControl.Resources>
     <DockPanel DataContext="{Binding Items,RelativeSource={RelativeSource AncestorType={x:Type l:ListController}}}">
-        <TextBlock Text="Панель" VerticalAlignment="Center" Margin="3,0"/>
+        <TextBlock Text="{Binding PanelName, TargetNullValue=[Панель],FallbackValue=[--]}" VerticalAlignment="Center" Margin="3,0"/>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-            <Button ToolTip="Создать">
+            <Button ToolTip="Создать"
+                    Command="{Binding CreateCommand}">
                 <fa:ImageAwesome Icon="Plus" Foreground="DarkSalmon"/>
             </Button>
-            <Button ToolTip="Редактировать">
+            <Button ToolTip="Редактировать"
+                    Command="{Binding EditCommand}">
                 <fa:ImageAwesome Icon="Edit" Foreground="BurlyWood"/>
             </Button>
-            <Button ToolTip="Удалить">
+            <Button ToolTip="Удалить"
+                    Command="{Binding DeleteCommand}"                    
+                    CommandParameter="{Binding SelectedItem}">
                 <fa:ImageAwesome Icon="Trash" Foreground="CadetBlue"/>
             </Button>
         </StackPanel>
         <!--<ComboBox ItemsSource="{Binding Items,RelativeSource={RelativeSource AncestorType={x:Type l:ListController}}}"/>-->
-        <ComboBox ItemsSource="{Binding Items}" MinWidth="120"/>
+        <ComboBox MinWidth="120"
+                  ItemsSource="{Binding Items}"
+                  SelectedItem="{Binding SelectedItem}"
+                  SelectedIndex="{Binding SelectedItemIndex}"
+                  SelectedValuePath="{Binding SeletedPropertyPath}"
+                  DisplayMemberPath="{Binding ViewPropertyPath}"
+                  ItemTemplate="{Binding ItemTemplate}"
+                  />
     </DockPanel>
 </UserControl>

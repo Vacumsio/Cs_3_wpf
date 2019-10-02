@@ -171,6 +171,8 @@ namespace MailSender.Controls
 
         #endregion
 
+        #region Commands
+
         #region CreateCommand : ICommand - Команда создания нового значения
 
         /// <summary>
@@ -194,10 +196,10 @@ namespace MailSender.Controls
 
         #endregion
 
-        #region EditCommand : ICommand - Команда редактирования значения
+        #region EditCommand : ICommand - Команда редактирования элемента
 
         /// <summary>
-        /// Команда редактирования значения
+        /// Команда редактирования элемента
         /// </summary>
 
         public static readonly DependencyProperty EditCommandProperty =
@@ -207,7 +209,7 @@ namespace MailSender.Controls
                 typeof(ListController),
                 new PropertyMetadata(default(ICommand))
                 );
-        [Description("Команда редактирования значения")]
+        [Description("Команда редактирования элемента")]
 
         public ICommand EditCommand
         {
@@ -217,7 +219,42 @@ namespace MailSender.Controls
 
         #endregion
 
+        #region DeleteCommand : ICommand - Команда удаления элемента
 
+        /// <summary>
+        /// Команда удаления элемента
+        /// </summary>
+
+        public static readonly DependencyProperty DeleteCommandProperty =
+            DependencyProperty.Register(
+                nameof(DeleteCommand),
+                typeof(ICommand),
+                typeof(ListController),
+                new PropertyMetadata(default(ICommand))
+                );
+        [Description("Команда удаления элемента")]
+
+        public ICommand DeleteCommand
+        {
+            get => (ICommand)GetValue(DeleteCommandProperty);
+            set => SetValue(DeleteCommandProperty, value);
+        }
+
+        #endregion
+
+        #endregion
+
+        //propdp +TAB
+
+        //public int MyProperty
+        //{
+        //    get { return (int)GetValue(MyPropertyProperty); }
+        //    set { SetValue(MyPropertyProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty MyPropertyProperty =
+        //    DependencyProperty.Register("MyProperty", typeof(int), typeof(ownerclass), new PropertyMetadata(0));
 
         public ListController() => InitializeComponent();
     }

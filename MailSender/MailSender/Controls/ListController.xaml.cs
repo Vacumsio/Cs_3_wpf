@@ -244,6 +244,30 @@ namespace MailSender.Controls
 
         #endregion
 
+        #region ItemTemplate : DataTemplate - Шаблон визуализации данных
+
+        /// <summary>
+        /// Шаблон визуализации данных
+        /// </summary>
+
+        public static readonly DependencyProperty ItemTemplateProperty =
+            DependencyProperty.Register(
+                nameof(ItemTemplate),
+                typeof(DataTemplate),
+                typeof(ListController),
+                new PropertyMetadata(default(DataTemplate))
+                );
+        [Description("Шаблон визуализации данных")]
+
+        public DataTemplate ItemTemplate
+        {
+            get => (DataTemplate)GetValue(ItemTemplateProperty);
+            set => SetValue(ItemTemplateProperty, value);
+        }
+
+        #endregion
+
+
         //propdp +TAB
 
         //public int MyProperty

@@ -17,30 +17,30 @@
         </Style>
     </UserControl.Resources>
     <DockPanel DataContext="{Binding Items,RelativeSource={RelativeSource AncestorType={x:Type l:ListController}}}">
-        <TextBlock Text="{Binding PanelName, TargetNullValue=[Панель],FallbackValue=[--]}" VerticalAlignment="Center" Margin="3,0"/>
+        <TextBlock Text="{Binding PanelName, TargetNullValue=[],FallbackValue=[--], Mode=TwoWay}" VerticalAlignment="Center" Margin="3,0"/>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
             <Button ToolTip="Создать"
-                    Command="{Binding CreateCommand}">
+                    Command="{Binding CreateCommand, Mode=TwoWay}">
                 <fa:ImageAwesome Icon="Plus" Foreground="DarkSalmon"/>
             </Button>
             <Button ToolTip="Редактировать"
-                    Command="{Binding EditCommand}">
+                    Command="{Binding EditCommand, Mode=TwoWay}">
                 <fa:ImageAwesome Icon="Edit" Foreground="BurlyWood"/>
             </Button>
             <Button ToolTip="Удалить"
-                    Command="{Binding DeleteCommand}"                    
-                    CommandParameter="{Binding SelectedItem}">
+                    Command="{Binding DeleteCommand, Mode=TwoWay}"                    
+                    CommandParameter="{Binding SelectedItem, Mode=TwoWay}">
                 <fa:ImageAwesome Icon="Trash" Foreground="CadetBlue"/>
             </Button>
         </StackPanel>
         <!--<ComboBox ItemsSource="{Binding Items,RelativeSource={RelativeSource AncestorType={x:Type l:ListController}}}"/>-->
-        <ComboBox MinWidth="120"
-                  ItemsSource="{Binding Items}"
-                  SelectedItem="{Binding SelectedItem}"
-                  SelectedIndex="{Binding SelectedItemIndex}"
-                  SelectedValuePath="{Binding SeletedPropertyPath}"
-                  DisplayMemberPath="{Binding ViewPropertyPath}"
-                  ItemTemplate="{Binding ItemTemplate}"
+        <ComboBox MinWidth="120"                 
+                  ItemsSource="{Binding Items, Mode=TwoWay}"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                  SelectedIndex="{Binding SelectedItemIndex, Mode=TwoWay}"
+                  SelectedValuePath="{Binding SeletedPropertyPath, Mode=TwoWay}"
+                  DisplayMemberPath="{Binding ViewPropertyPath, Mode=TwoWay}"
+                  ItemTemplate="{Binding ItemTemplate, Mode=TwoWay}"
                   />
     </DockPanel>
 </UserControl>

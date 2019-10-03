@@ -16,7 +16,7 @@
             <Setter Property="Padding" Value="3,0"/>
         </Style>
     </UserControl.Resources>
-    <DockPanel DataContext="{Binding Items,RelativeSource={RelativeSource AncestorType={x:Type l:ListController}}}">
+    <DockPanel DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type l:ListController}}}">        
         <TextBlock Text="{Binding PanelName, TargetNullValue=[],FallbackValue=[--], Mode=TwoWay}" VerticalAlignment="Center" Margin="3,0"/>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
             <Button ToolTip="Создать"

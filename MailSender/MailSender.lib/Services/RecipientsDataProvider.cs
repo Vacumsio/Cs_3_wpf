@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,14 @@ namespace MailSender.lib.Services
 
         public RecipientsDataProvider(MailSenderDBDataContext db)
         {
+
             _db = db;
         }
 
-        public IEnumerable<Recipient> GetAll() => _db.Recipient.ToArray();
+        public IEnumerable<Recipient> GetAll()
+        {
+            _db.Refresh(RefreshMode.OverwriteCurrentValues);
+            return _db.Recipient.ToArray();
+        }
     }
 }

@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using MailSender.lib.Data.Linq2SQL;
 using MailSender.lib.Services;
 
@@ -21,23 +23,37 @@ namespace MailSender.ViewModel
             set => Set(ref _WindowTitle, value);
         }
 
-        public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
+        private ObservableCollection<Recipient> _Recipients = new ObservableCollection<Recipient>();
+
+        public ObservableCollection<Recipient> Recipients
+        {
+            get => _Recipients;
+            set => Set(ref _Recipients, value);
+        }
+
+        public ICommand RefreshDataCommand { get; }
 
         public MainWindowViewModel(RecipientsDataProvider RecipientsProvider)
         {
             _RecipientsProvider = RecipientsProvider;
 
+            RefreshDataCommand = new RelayCommand(OnRefreshDataCommandExecuted, CanRefreshDataCommandExecuted);
+            //RefreshData();
+        }
+
+        private bool CanRefreshDataCommandExecuted() => true;
+
+        private void OnRefreshDataCommandExecuted()
+        {
             RefreshData();
         }
 
         public void RefreshData()
         {
-            var recipients = Recipients;
-            Recipients.Clear();
-            foreach (var recipient in _RecipientsProvider.GetAll())
-            {
+            var recipients = new ObservableCollection<Recipient>();
+            foreach (var recipient in _RecipientsProvider.GetAll())            
                 recipients.Add(recipient);
-            }
+            Recipients = recipients;
         }
     }
 }

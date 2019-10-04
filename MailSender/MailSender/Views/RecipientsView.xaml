@@ -14,7 +14,12 @@
             </TextBlock>
             <TextBox/>
         </DockPanel>
-        <Button  DockPanel.Dock="Bottom" HorizontalAlignment="Center" Padding="21,7" Margin="0,4">Обновить</Button>
+        <Button  DockPanel.Dock="Bottom" 
+                 HorizontalAlignment="Center" 
+                 Padding="21,7" 
+                 Margin="0,4"
+                 Content="Обновить"
+                 Command="{Binding RefreshDataCommand}"/>
         <DataGrid Grid.Row="1"
                               AutoGenerateColumns="False"
                               ItemsSource="{Binding Recipients}"

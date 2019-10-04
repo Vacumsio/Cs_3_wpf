@@ -10,8 +10,7 @@
         xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
         xmlns:ctrl="clr-namespace:MailSender.Controls"        
         Title="MainWindow" 
-        Height="450" Width="800"
-        DataContext="{Binding MainWindowViewModel,Source={StaticResource Locator}}">
+        Height="450" Width="800"> 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">

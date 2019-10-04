@@ -114,6 +114,29 @@ namespace MailSender.Controls
 
         #endregion
 
+        #region SeletedPropertyPath : string - Выбранный отображаемый элемент
+
+        /// <summary>
+        /// Выбранный отображаемый элемент
+        /// </summary>
+
+        public static readonly DependencyProperty SeletedPropertyPathProperty =
+            DependencyProperty.Register(
+                nameof(SeletedPropertyPath),
+                typeof(string),
+                typeof(ListController),
+                new PropertyMetadata(default(string))
+                );
+        [Description("Выбранный отображаемый элемент")]
+
+        public string SeletedPropertyPath
+        {
+            get => (string)GetValue(SeletedPropertyPathProperty);
+            set => SetValue(SeletedPropertyPathProperty, value);
+        }
+
+        #endregion
+
         #region ViewPropertyPath : string - Имя отображаемого свойства
 
         /// <summary>

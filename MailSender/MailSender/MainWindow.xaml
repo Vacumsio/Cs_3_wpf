@@ -8,9 +8,11 @@
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"        
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:db="clr-namespace:MailSender.lib.Data.Linq2SQL;assembly=MailSender.lib"
-        xmlns:ctrl="clr-namespace:MailSender.Controls"        
+        xmlns:ctrl="clr-namespace:MailSender.Controls"
+        xmlns:views="clr-namespace:MailSender.Views"
         Title="MainWindow" 
-        Height="450" Width="800"> 
+        Height="450" Width="800"
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"> 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -121,19 +123,9 @@
                             </Button>
                         </ToolBar>                        
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1"
-                              ItemsSource="{Binding Recipient}"
-                              AutoGenerateColumns="False"                              
-                              GridLinesVisibility="Vertical"
-                              AlternatingRowBackground="LightBlue"
-                              IsReadOnly="True"
-                              HeadersVisibility="Column">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
-                            <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Address}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Grid Grid.Row="1">
+                        <views:RecipientsView/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Планировщик">

@@ -41,9 +41,6 @@
         <TabControl Name="MainTabControl">
             <TabItem Header="Расылка">
                 <Grid>
-                    <Grid.Resources>
-                        <db:MailSenderDBDataContext x:Key="DataBase"/>
-                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
@@ -125,8 +122,8 @@
                         </ToolBar>                        
                     </ToolBarTray>
                     <DataGrid Grid.Row="1"
-                              AutoGenerateColumns="False"
-                              ItemsSource="{Binding Recipient, Source={StaticResource DataBase}}"
+                              ItemsSource="{Binding Recipient}"
+                              AutoGenerateColumns="False"                              
                               GridLinesVisibility="Vertical"
                               AlternatingRowBackground="LightBlue"
                               IsReadOnly="True"

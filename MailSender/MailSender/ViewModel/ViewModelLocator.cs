@@ -15,6 +15,8 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using MailSender.lib.Services;
+using MailSender.lib.Data.Linq2SQL;
 
 namespace MailSender.ViewModel
 {
@@ -29,7 +31,8 @@ namespace MailSender.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            var services = SimpleIoc.Default;
+            ServiceLocator.SetLocatorProvider(() => services);
 
             ////if (ViewModelBase.IsInDesignModeStatic)
             ////{
@@ -42,7 +45,9 @@ namespace MailSender.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainWindowViewModel>();
+            services.Register<MainWindowViewModel>();
+            services.Register<RecipientsDataProvider>();
+            services.Register(() => new MailSenderDBDataContext());
         }
 
         public MainWindowViewModel MainWindowModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();

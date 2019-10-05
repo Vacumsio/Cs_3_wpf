@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MailSender.lib.Data.Linq2SQL;
+using MailSender.lib.Entities;
 using MailSender.lib.Services.Interfaces;
 
 namespace MailSender.lib.Services.InMemory
@@ -23,7 +23,23 @@ namespace MailSender.lib.Services.InMemory
             return recipient.Id;
         }
 
+        public void Edit(int id, Recipient item)
+        {
+            var db_item = GetById(id);
+            if (db_item is null) return;
+            db_item.Name = item.Name;
+            db_item.Address = item.Address;
+        }
+
         public IEnumerable<Recipient> GetAll() => _Recipients;
+
+        public Recipient GetById(int id) => _Recipients.FirstOrDefault(r => r.Id == id);
+
+        public bool Remove(int id)
+        {
+            var db_tem = GetById(id);
+            return _Recipients.Remove(db_tem);
+        }
 
         public void SaveChanges() { }
     }

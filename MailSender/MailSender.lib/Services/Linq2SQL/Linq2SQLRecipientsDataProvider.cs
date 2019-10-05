@@ -33,9 +33,7 @@ namespace MailSender.lib.Services.Linq2SQL
             return recipient.Id;
         }
 
-        public void SaveChanges() => _db.SubmitChanges();
-
-
+        public void SaveChanges() => _db.SubmitChanges();        
 
         public Recipient GetById(int id)
         {

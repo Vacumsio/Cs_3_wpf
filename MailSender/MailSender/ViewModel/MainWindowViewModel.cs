@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using MailSender.lib.Data.Linq2SQL;
+using MailSender.lib.Entities;
 using MailSender.lib.Services;
 using MailSender.lib.Services.Interfaces;
 using MailSender.lib.Services.Linq2SQL;

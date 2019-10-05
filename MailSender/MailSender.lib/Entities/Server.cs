@@ -1,12 +1,10 @@
-﻿namespace MailSender.lib.Entities
+﻿using MailSender.lib.Entities.Base;
+
+namespace MailSender.lib.Entities
 {
-    public class Server
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Address { get; set; }
+    public class Server : NameEntity
+    {        
+        public string Host { get; set; }
 
         public int Port { get; set; } = 25;
 

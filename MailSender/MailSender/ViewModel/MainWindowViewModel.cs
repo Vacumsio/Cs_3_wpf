@@ -15,13 +15,13 @@ namespace MailSender.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         private RecipientsDataProvider _RecipientsProvider;
-        private string _WindowTitle = "Рассыльщик почты версии 0.001";
+        //private string _WindowTitle = "Рассыльщик почты версии 0.001";
 
-        public string WindowTitle
-        {
-            get => _WindowTitle;
-            set => Set(ref _WindowTitle, value);
-        }
+        //public string WindowTitle
+        //{
+        //    get => _WindowTitle;
+        //    set => Set(ref _WindowTitle, value);
+        //}
 
         private ObservableCollection<Recipient> _Recipients = new ObservableCollection<Recipient>();
 
@@ -29,6 +29,14 @@ namespace MailSender.ViewModel
         {
             get => _Recipients;
             set => Set(ref _Recipients, value);
+        }
+
+        private Recipient _SelectedRecipient;
+
+        public Recipient SelectedRecipient
+        {
+            get => _SelectedRecipient;
+            set => Set(ref _SelectedRecipient, value);
         }
 
         public ICommand RefreshDataCommand { get; }

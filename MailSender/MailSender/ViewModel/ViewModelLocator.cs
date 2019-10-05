@@ -17,6 +17,9 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using MailSender.lib.Services;
 using MailSender.lib.Data.Linq2SQL;
+using MailSender.lib.Services.Linq2SQL;
+using MailSender.lib.Services.InMemory;
+using MailSender.lib.Services.Interfaces;
 
 namespace MailSender.ViewModel
 {
@@ -46,7 +49,8 @@ namespace MailSender.ViewModel
             ////}
 
             services.Register<MainWindowViewModel>();
-            services.Register<Linq2SQLRecipientsDataProvider>();
+            services.Register<IRecipientsDataProvider, Linq2SQLRecipientsDataProvider>();
+            //services.Register<IRecipientsDataProvider, InMemoryRecipientsDataProvider>();
             services.Register(() => new MailSenderDBDataContext());
         }
 

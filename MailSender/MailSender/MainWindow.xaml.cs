@@ -24,8 +24,6 @@ namespace MailSender
     {
         public MainWindow() => InitializeComponent();
 
-        private void ExitMenuItem_OnClick(object Sender, RoutedEventArgs e) => Close();
-
         private void TabControllerSwitcher_LeftButtonClick(object Sender, EventArgs E)
         {
             if (!(Sender is TabControllerSwitcher switcher)) return;

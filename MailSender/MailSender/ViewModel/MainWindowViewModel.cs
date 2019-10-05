@@ -14,7 +14,7 @@ namespace MailSender.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private RecipientsDataProvider _RecipientsProvider;
+        private Linq2SQLRecipientsDataProvider _RecipientsProvider;
         //private string _WindowTitle = "Рассыльщик почты версии 0.001";
 
         //public string WindowTitle
@@ -39,14 +39,21 @@ namespace MailSender.ViewModel
             set => Set(ref _SelectedRecipient, value);
         }
 
+        public ICommand SaveChangesCommand { get; }
+
         public ICommand RefreshDataCommand { get; }
 
-        public MainWindowViewModel(RecipientsDataProvider RecipientsProvider)
+        public MainWindowViewModel(Linq2SQLRecipientsDataProvider RecipientsProvider)
         {
             _RecipientsProvider = RecipientsProvider;
 
             RefreshDataCommand = new RelayCommand(OnRefreshDataCommandExecuted, CanRefreshDataCommandExecuted);
-            //RefreshData();
+            SaveChangesCommand = new RelayCommand(OnSaveChangesCommandExecuted);
+        }
+
+        private void OnSaveChangesCommandExecuted()
+        {
+            _RecipientsProvider.SaveChanges();
         }
 
         private bool CanRefreshDataCommandExecuted() => true;

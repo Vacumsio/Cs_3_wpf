@@ -8,11 +8,11 @@ using MailSender.lib.Data.Linq2SQL;
 
 namespace MailSender.lib.Services
 {
-    public class RecipientsDataProvider
+    public class Linq2SQLRecipientsDataProvider
     {
         private readonly MailSenderDBDataContext _db;
 
-        public RecipientsDataProvider(MailSenderDBDataContext db)
+        public Linq2SQLRecipientsDataProvider(MailSenderDBDataContext db)
         {
 
             _db = db;
@@ -22,6 +22,17 @@ namespace MailSender.lib.Services
         {
             _db.Refresh(RefreshMode.OverwriteCurrentValues);
             return _db.Recipient.ToArray();
+        }
+        public int Create(Recipient recipient)
+        {
+            if (recipient is null) throw new ArgumentNullException(nameof(recipient));
+            _db.Recipient.InsertOnSubmit(recipient);
+            SaveChanges();
+            return recipient.Id;
+        }
+        public void SaveChanges()
+        {
+            _db.SubmitChanges();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace MailSender.ViewModel
             ////}
 
             services.Register<MainWindowViewModel>();
-            services.Register<RecipientsDataProvider>();
+            services.Register<Linq2SQLRecipientsDataProvider>();
             services.Register(() => new MailSenderDBDataContext());
         }
 

@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBase.cs" />
     <Compile Include="Data\Linq2SQL\MailSenderDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -60,8 +59,6 @@
     <Compile Include="Entities\SchedullerTask.cs" />
     <Compile Include="Entities\Sender.cs" />
     <Compile Include="Entities\Server.cs" />
-    <Compile Include="MailSenderService.cs" />
-    <Compile Include="MailSheduler.cs" />
     <Compile Include="MVVM\LyambdaCommand.cs" />
     <Compile Include="MVVM\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +84,7 @@
     <Compile Include="Services\Interfaces\IServersDataProvider.cs" />
     <Compile Include="Services\Interfaces\IStatisticService.cs" />
     <Compile Include="Services\Linq2SQL\Linq2SQLRecipientsDataProvider.cs" />
+    <Compile Include="Services\SmtpMailSender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

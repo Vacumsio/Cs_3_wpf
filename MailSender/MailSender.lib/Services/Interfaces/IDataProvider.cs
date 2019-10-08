@@ -8,7 +8,7 @@ namespace MailSender.lib.Services.Interfaces
 
         T GetById(int id);
 
-        int Create(T recipient);
+        int Create(T item);
 
         void Edit(int id, T item);
 

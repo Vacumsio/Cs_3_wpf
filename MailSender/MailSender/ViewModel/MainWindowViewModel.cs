@@ -17,13 +17,14 @@ namespace MailSender.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         private IRecipientsDataProvider _RecipientsProvider;
-        //private string _WindowTitle = "Рассыльщик почты версии 0.001";
 
-        //public string WindowTitle
-        //{
-        //    get => _WindowTitle;
-        //    set => Set(ref _WindowTitle, value);
-        //}
+        private string _WindowTitle = "Рассыльщик почты версии 0.001";
+
+        public string WindowTitle
+        {
+            get => _WindowTitle;
+            set => Set(ref _WindowTitle, value);
+        }
 
         private ObservableCollection<Recipient> _Recipients = new ObservableCollection<Recipient>();
 
@@ -52,6 +53,12 @@ namespace MailSender.ViewModel
 
             RefreshDataCommand = new RelayCommand(OnRefreshDataCommandExecuted, CanRefreshDataCommandExecuted);
             SaveChangesCommand = new RelayCommand(OnSaveChangesCommandExecuted);
+
+            if (IsInDesignMode)
+            {
+                Recipients.Add(new Recipient { Id = 1, Name = "Recipient 1", Address = "recipient1@server.com" });
+                Recipients.Add(new Recipient { Id = 2, Name = "Recipient 2", Address = "recipient2@server.com" });
+            }
         }
 
         private void OnSaveChangesCommandExecuted()
@@ -71,6 +78,7 @@ namespace MailSender.ViewModel
             var recipients = new ObservableCollection<Recipient>();
             foreach (var recipient in _RecipientsProvider.GetAll())            
                 recipients.Add(recipient);
+            Recipients = null;
             Recipients = recipients;
         }
     }

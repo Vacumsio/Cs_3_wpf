@@ -53,44 +53,13 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <ToolBarTray Grid.Row="0" Grid.ColumnSpan="2">
-                        <ToolBar>
-                            <!--<Label MinWidth="85">Отправители</Label>
-                            <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Senders}" DisplayMemberPath="Name" SelectedIndex="0"/>
-                            <Button ToolTip="Создать">
-                                <fa:ImageAwesome Height="18" Icon="Plus" Foreground="DarkSalmon"/>
-                            </Button>
-                            <Button ToolTip="Редактировать">
-                                <fa:ImageAwesome Height="18" Icon="Edit" Foreground="BurlyWood"/>
-                            </Button>
-                            <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Height="18" Icon="Trash" Foreground="CadetBlue"/>
-                            </Button>-->
+                        <ToolBar>                            
                             <ctrl:ListController
                                 PanelName="Отправители"
                                 Items="{x:Static data:TestData.Senders}"
                                 ViewPropertyPath="Name"/>
                         </ToolBar>
-                        <ToolBar Band="1">
-                            <!--<Label MinWidth="85">Сервера</Label>
-                            <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Servers}" SelectedIndex="0">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type entities:Server}">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}" Opacity="0.6"/>
-                                            <TextBlock Text="{Binding Address}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port, StringFormat=:{0}}"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <Button ToolTip="Создать">
-                                <fa:ImageAwesome Height="18" Icon="Plus" Foreground="DarkSalmon"/>
-                            </Button>
-                            <Button ToolTip="Редактировать">
-                                <fa:ImageAwesome Height="18" Icon="Edit" Foreground="BurlyWood"/>
-                            </Button>
-                            <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Height="18" Icon="Trash" Foreground="CadetBlue"/>
-                            </Button>-->
+                        <ToolBar Band="1">                            
                             <ctrl:ListController
                                 PanelName="Сервера"
                                 Items="{x:Static data:TestData.Servers}"

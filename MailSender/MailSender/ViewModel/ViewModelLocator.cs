@@ -18,7 +18,6 @@ using MailSender.lib.Data.Linq2SQL;
 using MailSender.lib.Services.InMemory;
 using MailSender.lib.Services.Interfaces;
 using MailSender.lib.Services.Linq2SQL;
-using System;
 
 namespace MailSender.ViewModel
 {
@@ -43,39 +42,5 @@ namespace MailSender.ViewModel
         }
 
         public MainWindowViewModel MainWindowModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
-    }
-
-    public static class SimpleIocExtensions
-    {
-        public static SimpleIoc TryRegister<TIntefrace, TService>(this SimpleIoc services)
-            where TIntefrace : class
-            where TService : class, TIntefrace
-        {
-            if (!services.IsRegistered<TIntefrace>()) return services;
-
-            services.Register<TIntefrace, TService>();
-
-            return services;
-        }
-
-        public static SimpleIoc TryRegister<TService>(this SimpleIoc services)
-            where TService : class
-        {
-            if (!services.IsRegistered<TService>()) return services;
-
-            services.Register<TService>();
-
-            return services;
-        }
-
-        public static SimpleIoc TryRegister<TService>(this SimpleIoc services, Func<TService> Factory)
-            where TService : class
-        {
-            if (!services.IsRegistered<TService>()) return services;
-
-            services.Register<TService>();
-
-            return services;
-        }
     }
 }

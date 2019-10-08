@@ -10,7 +10,7 @@ namespace MailSender.lib.Services.Linq2SQL
     {
         private readonly Data.Linq2SQL.MailSenderDBDataContext _db;
 
-        public Linq2SQLRecipientsDataProvider(Data.Linq2SQL.MailSenderDBDataContext db) { _db = db; }
+        public Linq2SQLRecipientsDataProvider(Data.Linq2SQL.MailSenderDBDataContext db) => _db = db;
 
         public IEnumerable<Recipient> GetAll() => _db.Recipient.ToArray().Select(r => new Recipient
         {
@@ -18,22 +18,6 @@ namespace MailSender.lib.Services.Linq2SQL
             Name = r.Name,
             Address = r.Address
         });
-
-        public int Create(Recipient recipient)
-        {
-            if (recipient is null) throw new ArgumentNullException(nameof(recipient));
-            if (recipient.Id != 0) return recipient.Id;
-            var entity = new Data.Linq2SQL.Recipient
-            {
-                Name = recipient.Name,
-                Address = recipient.Address
-            };
-            _db.Recipient.InsertOnSubmit(entity);
-            SaveChanges();
-            return recipient.Id;
-        }
-
-        public void SaveChanges() => _db.SubmitChanges();        
 
         public Recipient GetById(int id)
         {
@@ -48,13 +32,30 @@ namespace MailSender.lib.Services.Linq2SQL
                 };
         }
 
+        public int Create(Recipient recipient)
+        {
+            if (recipient is null) throw new ArgumentNullException(nameof(recipient));
+            if (recipient.Id != 0) return recipient.Id;
+
+            var entity = new Data.Linq2SQL.Recipient
+            {
+                Name = recipient.Name,
+                Address = recipient.Address
+            };
+            _db.Recipient.InsertOnSubmit(entity);
+            SaveChanges();
+            return entity.Id;
+        }
+
         public void Edit(int id, Recipient item)
         {
             var db_item = _db.Recipient.FirstOrDefault(r => r.Id == id);
             if (db_item is null) return;
+
             db_item.Name = item.Name;
             db_item.Address = item.Address;
-            SaveChanges(); 
+
+            SaveChanges();
         }
 
         public bool Remove(int id)
@@ -63,7 +64,10 @@ namespace MailSender.lib.Services.Linq2SQL
             if (db_item is null) return false;
 
             _db.Recipient.DeleteOnSubmit(db_item);
-            SaveChanges(); return true;
+            SaveChanges();
+            return true;
         }
+
+        public void SaveChanges() => _db.SubmitChanges();
     }
 }

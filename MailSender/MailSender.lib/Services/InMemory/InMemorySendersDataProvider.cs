@@ -8,7 +8,12 @@ namespace MailSender.lib.Services.InMemory
     {
         public InMemorySendersDataProvider()
         {
-            _Items.AddRange(Enumerable.Range(1, 20).Select(i => new Sender { Id = i, Name = $"Отправитель  {i}", Address = $"sender{i}@server.com" }));
+            _Items.AddRange(Enumerable.Range(1, 20).Select(i => new Sender
+            {
+                Id = i,
+                Name = $"Отправитель  {i}",
+                Address = $"sender{i}@server.com"
+            }));
         }
 
         public override void Edit(int id, Sender item)

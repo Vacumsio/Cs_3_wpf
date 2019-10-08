@@ -8,39 +8,48 @@ using MailSender.lib.Services.Interfaces;
 
 namespace MailSender.lib.Services.InMemory
 {
-    public class InMemoryRecipientsDataProvider : IRecipientsDataProvider
+    public class InMemoryRecipientsDataProvider : InDataProvider<Recipient>
     {
-        public readonly List<Recipient> _Recipients = new List<Recipient>();
-
-        public int Create(Recipient recipient)
-        {
-            if (_Recipients.Contains(recipient)) return recipient.Id;
-
-            recipient.Id = _Recipients.Count == 0 ? 1 : _Recipients.Max(r => r.Id) + 1;
-
-            _Recipients.Add(recipient);
-
-            return recipient.Id;
-        }
-
-        public void Edit(int id, Recipient item)
+        public override void Edit(int id, Recipient item)
         {
             var db_item = GetById(id);
             if (db_item is null) return;
             db_item.Name = item.Name;
             db_item.Address = item.Address;
         }
+    }
 
-        public IEnumerable<Recipient> GetAll() => _Recipients;
 
-        public Recipient GetById(int id) => _Recipients.FirstOrDefault(r => r.Id == id);
-
-        public bool Remove(int id)
+    public class InMemoryServersDataProvider : InDataProvider<Server>
+    {
+        public override void Edit(int id, Server item)
         {
-            var db_tem = GetById(id);
-            return _Recipients.Remove(db_tem);
+            var db_item = GetById(id);
+            if (db_item is null) return;
+            db_item.Name = item.Name;
+            db_item.Address = item.Address;
         }
+    }
 
-        public void SaveChanges() { }
+    public class InMemorySendersDataProvider : InDataProvider<Sender>
+    {
+        public override void Edit(int id, Sender item)
+        {
+            var db_item = GetById(id);
+            if (db_item is null) return;
+            db_item.Name = item.Name;
+            db_item.Address = item.Address;
+        }
+    }
+
+    public class InMemoryEmailDataProvider : InDataProvider<Email>
+    {
+        public override void Edit(int id, Email item)
+        {
+            var db_item = GetById(id);
+            if (db_item is null) return;
+            db_item.Subject = item.Subject;
+            db_item.Body = item.Body;
+        }
     }
 }

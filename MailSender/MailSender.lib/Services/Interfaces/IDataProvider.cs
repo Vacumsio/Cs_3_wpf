@@ -17,4 +17,4 @@ namespace MailSender.lib.Services.Interfaces
         void SaveChanges();
     }
 }
-}
+

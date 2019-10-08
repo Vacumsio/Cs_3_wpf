@@ -45,7 +45,8 @@ namespace MailSender.ViewModel
 
         public ICommand RefreshDataCommand { get; }
 
-        public MainWindowViewModel(IRecipientsDataProvider RecipientsProvider)
+        public MainWindowViewModel(
+            IRecipientsDataProvider RecipientsProvider)
         {
             _RecipientsProvider = RecipientsProvider;
 

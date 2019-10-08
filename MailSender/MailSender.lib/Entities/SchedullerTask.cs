@@ -5,7 +5,7 @@ namespace MailSender.lib.Entities
 {
     public class SchedullerTask : BaseEntity
     {
-        public DateTime time { get; set; }
+        public DateTime Time { get; set; }
 
         public Sender Sender { get; set; }
 

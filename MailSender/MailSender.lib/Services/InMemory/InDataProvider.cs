@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using MailSender.lib.Entities.Base;
+﻿using MailSender.lib.Entities.Base;
 using MailSender.lib.Services.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MailSender.lib.Services.InMemory
 {
     public abstract class InDataProvider<T> : IDataProvider<T> where T : BaseEntity
     {
-        public readonly List<T> _Items = new List<T>();
+        protected readonly List<T> _Items = new List<T>();
 
         public IEnumerable<T> GetAll() => _Items;
 
@@ -30,7 +31,7 @@ namespace MailSender.lib.Services.InMemory
         }
 
         public abstract void Edit(int id, T item);
-         
+        
 
         public void SaveChanges()
         {

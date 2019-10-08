@@ -6,7 +6,12 @@
              xmlns:l="clr-namespace:MailSender.Views"             
              d:DesignHeight="350" d:DesignWidth="250"
              DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
-    <Grid>
+    <Grid Margin="3">
+        <Grid.Resources>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Margin" Value="5,2"/>
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>

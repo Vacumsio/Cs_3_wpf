@@ -14,6 +14,7 @@
 
 using GalaSoft.MvvmLight.Ioc;
 using System;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace MailSender.ViewModel
 {
@@ -23,8 +24,7 @@ namespace MailSender.ViewModel
             where TIntefrace : class
             where TService : class, TIntefrace
         {
-            if (!services.IsRegistered<TIntefrace>()) return services;
-
+            if (services.IsRegistered<TIntefrace>()) return services;
             services.Register<TIntefrace, TService>();
 
             return services;
@@ -33,7 +33,7 @@ namespace MailSender.ViewModel
         public static SimpleIoc TryRegister<TService>(this SimpleIoc services)
             where TService : class
         {
-            if (!services.IsRegistered<TService>()) return services;
+            if (services.IsRegistered<TService>()) return services;
 
             services.Register<TService>();
 
@@ -43,9 +43,9 @@ namespace MailSender.ViewModel
         public static SimpleIoc TryRegister<TService>(this SimpleIoc services, Func<TService> Factory)
             where TService : class
         {
-            if (!services.IsRegistered<TService>()) return services;
+            if (services.IsRegistered<TService>()) return services;
 
-            services.Register<TService>();
+            services.Register(Factory);
 
             return services;
         }

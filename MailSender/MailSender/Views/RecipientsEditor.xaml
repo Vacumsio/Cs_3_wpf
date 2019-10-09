@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              d:DesignHeight="120" d:DesignWidth="250"
              DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
-    <Grid Margin="3">
+    <Grid Margin="3" Validation.Error="OnDataValidationError">
         <Grid.Resources>
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="Margin" Value="5,2"/>
@@ -28,9 +28,9 @@
         <TextBlock Grid.Column="0" Grid.Row="2" Text="Email"/>
 
         <TextBox Grid.Column="1" Grid.Row="0" 
-                 Text="{Binding SelectedRecipient.Id, NotifyOnValidationError=True}"/>
+                Text="{Binding SelectedRecipient.Id, NotifyOnValidationError=True}"/>
         <TextBox Grid.Column="1" Grid.Row="1"
-                Text="{Binding SelectedRecipient.Name, NotifyOnValidationError=True, ValidatesOnNotifyDataErrors=True}"/>
+                Text="{Binding SelectedRecipient.Name, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
         <TextBox Grid.Column="1" Grid.Row="2"
                 Text="{Binding SelectedRecipient.Address}"/>
 

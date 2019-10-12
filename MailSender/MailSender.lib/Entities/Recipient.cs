@@ -11,9 +11,9 @@ namespace MailSender.lib.Entities
             get => base.Name;
             set
             {
-                //if (value is null) throw new ArgumentNullException(nameof(value));
-                //if (value.Length <= 3)
-                //    throw new ArgumentOutOfRangeException(nameof(value), "Длина строки должна быть больше 3");
+                if (value is null) throw new ArgumentNullException(nameof(value));
+                if (value.Length <= 3)
+                    throw new ArgumentOutOfRangeException(nameof(value), "Длина строки должна быть больше 3");
                 base.Name = value;
             }
         }

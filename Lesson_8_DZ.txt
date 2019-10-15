@@ -1,0 +1,19 @@
+GAGARSKIY P.
+TASK 1.
+
+public static int Factorial(int n)
+{
+	if(n<0) return 0;
+	if(n==0) return 1;
+	else return Factorial(n-1)*n;
+}
+
+static void Main(string[] args)
+{
+	int t,m;
+	Console.writeline();
+	t = int.Parse(Console.ReadLine());
+	m = Factorial(t);
+	Console.WriteLine(m);
+	Console.ReadKey();
+}

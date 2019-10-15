@@ -36,4 +36,4 @@ SELECT * FROM TABLE WHERE column1 LIKE 'А%' and group by column1 having count(c
 
 TASK 4.
 
-4, 5 , 7
+5

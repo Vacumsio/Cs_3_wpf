@@ -14,7 +14,6 @@
 
 using GalaSoft.MvvmLight.Ioc;
 using System;
-using GalaSoft.MvvmLight.Ioc;
 
 namespace MailSender.ViewModel
 {

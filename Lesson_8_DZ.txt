@@ -29,3 +29,7 @@ Console.WriteLine((short)obj);
 
 попытка уместить огромное в маленьком
 размер int = 4 байта => short = 2 байта , диапазон -2147483648_2147483647 в это -32767_32767 не может уместиться.
+
+TASK 3.
+
+SELECT * FROM TABLE WHERE column1 LIKE 'А%' and group by column1 having count(column1) >1;

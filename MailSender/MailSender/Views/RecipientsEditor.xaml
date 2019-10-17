@@ -36,13 +36,7 @@
             <Validation.ErrorTemplate>
                 <ControlTemplate>
                     <DockPanel>
-                        <TextBlock DockPanel.Dock="Right" Text="!" VerticalAlignment="Center" Foreground="Red" FontWeight="Bold" Margin="3,0">
-                                   <TextBlock.ToolTip>
-                                       <GroupBox Header="Ошибка валидации">
-                                           <TextBlock  Text="{Binding AdornedElement.(Validation.Errors)[0].ErrorContent, ElementName=AdornedElement}"/>
-                                       </GroupBox>
-                                   </TextBlock.ToolTip>
-                        </TextBlock>
+                        <TextBlock DockPanel.Dock="Right" Text="!" VerticalAlignment="Center" Foreground="Red" FontWeight="Bold" Margin="3,0" ToolTip="{Binding AdornedElement.(Validation.Errors)[0].ErrorContent, ElementName=AdornedElement}"></TextBlock>
                         <Border Padding="2" BorderBrush="Red" BorderThickness="3" CornerRadius="3">
                             <AdornedElementPlaceholder Name="AdornedElement"/>
                         </Border>

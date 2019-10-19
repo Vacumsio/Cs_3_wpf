@@ -11,9 +11,9 @@ namespace MailSender.lib.Entities
             get => base.Name;
             set
             {
-                if (value is null) throw new ArgumentNullException(nameof(value));
-                if (value.Length <= 3)
-                    throw new ArgumentOutOfRangeException(nameof(value), "Длина строки должна быть больше 3");
+                //if (value is null) throw new ArgumentNullException(nameof(value));
+                //if (value.Length <= 3)
+                    //throw new ArgumentOutOfRangeException(nameof(value), "Длина строки должна быть больше 3");
                 base.Name = value;
             }
         }
@@ -30,8 +30,8 @@ namespace MailSender.lib.Entities
 
                     case nameof(Name):
                         var name = Name;
-                        //if (name is null) return "Отсутствует ссылка на строку с именем";
-                        //if (name.Length <= 3) return "Имя должно быть длинее 3 символов";
+                        if (name is null) return "Отсутствует ссылка на строку с именем";
+                        if (name.Length <= 3) return "Имя должно быть длинее 3 символов";
                         if (!char.IsLetter(name[0])) return "Имя должно начинаться с буквы";
                         return string.Empty;
                 }

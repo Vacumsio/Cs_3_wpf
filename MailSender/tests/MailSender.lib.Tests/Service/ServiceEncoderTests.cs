@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
+﻿using MailSender.lib.Servece;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MailSender.lib.Tests.Service
@@ -59,11 +57,62 @@ namespace MailSender.lib.Tests.Service
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void Encode_ABC_to_BCD_with_key_1()
         {
-            //
-            // TODO: добавьте здесь логику теста
-            //
+            /* Тестирование по 3-м ААА
+             А arrange
+             А act
+             А assert  */
+
+            #region Arrange
+
+            var str = "ABC";
+            var expected_result = "BCD";
+            var key = 1;
+
+            #endregion
+
+            #region Act
+            
+            var actual_result = StringEncoder.Encode(str, key);
+
+            #endregion
+
+            #region Assert
+
+            Assert.AreEqual(expected_result, actual_result);
+
+            #endregion
+        }
+
+        [TestMethod]
+        public void Decode_ABC_to_BCD_with_key_1()
+        {
+            /* Тестирование по 3-м ААА
+             А arrange
+             А act
+             А assert  */
+
+            #region Arrange
+
+            var str = "BCD";
+            var expected_result = "ABC";
+            var key = 1;
+
+            #endregion
+
+            #region Act
+
+            var actual_result = StringEncoder.Decode(str, key);
+
+            #endregion
+
+            #region Assert
+
+            Assert.AreEqual(expected_result, actual_result);
+
+            #endregion
         }
     }
 }
+

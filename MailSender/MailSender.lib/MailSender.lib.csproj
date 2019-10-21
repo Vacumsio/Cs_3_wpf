@@ -67,6 +67,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Servece\StringEncoder.cs" />
     <Compile Include="Services\InMemory\InDataProvider.cs" />
     <Compile Include="Services\InMemory\InMemoryEmailsDataProvider.cs" />
     <Compile Include="Services\InMemory\InMemoryRecipientsDataProvider.cs" />

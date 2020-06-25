@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MailSender.lib
+namespace MailSender.lib.Services.Interfaces
 {
-    class MailSenderService
+    public interface IMailSenderService
     {
     }
 }
